@@ -9,11 +9,11 @@ module MaterialDesignIcons
     end
 
     def mdi_icon(name, options: {}, path_options: {})
-      raw MaterialDesignIcons::Icon.render(
+      MaterialDesignIcons::Icon.render(
         name: name,
         options: options,
         path_options: path_options
-      )
+      ).to_s.html_safe
     rescue MaterialDesignIcons::IconNotFoundError
       return if Rails.env.production?
 
